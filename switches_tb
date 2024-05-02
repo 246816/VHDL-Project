@@ -1,0 +1,92 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity switches_tb is
+end switches_tb;
+
+architecture Behavioral of switches_tb is
+    -- Component declaration for the switches entity
+    component switches is
+        Port (
+            sw_C      : in  std_logic;  -- Switch for note C
+            sw_D      : in  std_logic;  -- Switch for note D
+            sw_E      : in  std_logic;  -- Switch for note E
+            sw_F      : in  std_logic;  -- Switch for note F
+            sw_G      : in  std_logic;  -- Switch for note G
+            sw_A      : in  std_logic;  -- Switch for note A
+            sw_B      : in  std_logic;  -- Switch for note B
+            clk       : in  std_logic;  -- Clock input
+            reset     : in  std_logic;  -- Reset input
+            audio_out : out std_logic    -- Audio output
+        );
+    end component;
+
+    -- Declare signals for testbench
+    signal sw_C_tb, sw_D_tb, sw_E_tb, sw_F_tb, sw_G_tb, sw_A_tb, sw_B_tb: std_logic;
+    signal clk_tb, reset_tb: std_logic;
+    signal audio_out_tb: std_logic;
+
+begin
+    -- Instantiate the switches entity
+    DUT: switches
+        port map(
+            sw_C      => sw_C_tb,
+            sw_D      => sw_D_tb,
+            sw_E      => sw_E_tb,
+            sw_F      => sw_F_tb,
+            sw_G      => sw_G_tb,
+            sw_A      => sw_A_tb,
+            sw_B      => sw_B_tb,
+            clk       => clk_tb,
+            reset     => reset_tb,
+            audio_out => audio_out_tb
+        );
+
+    -- Stimulus process
+    stimulus_proc: process
+    begin
+        -- Initialize inputs
+        sw_C_tb <= '0';
+        sw_D_tb <= '0';
+        sw_E_tb <= '0';
+        sw_F_tb <= '0';
+        sw_G_tb <= '0';
+        sw_A_tb <= '0';
+        sw_B_tb <= '0';
+        clk_tb <= '0';
+        reset_tb <= '0';
+
+        -- Apply reset
+        reset_tb <= '1';
+        wait for 10 ns;
+        reset_tb <= '0';
+
+        -- Apply some inputs
+        sw_C_tb <= '1';
+        wait for 100 ms;
+        sw_C_tb <= '0';
+        sw_D_tb <= '1';
+        wait for 100 ms;
+        sw_D_tb <= '0';
+        sw_E_tb <= '1';
+        wait for 100 ms;
+        sw_E_tb <= '0';
+
+        -- Add more test cases here if needed
+
+        -- End testbench
+        wait;
+    end process stimulus_proc;
+
+    -- Clock process
+    clk_proc: process
+    begin
+        while true loop
+            clk_tb <= '0';
+            wait for 100 ns;
+            clk_tb <= '1';
+            wait for 100 ns;
+        end loop;
+    end process clk_proc;
+
+end Behavioral;
