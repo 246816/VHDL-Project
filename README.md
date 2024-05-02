@@ -18,6 +18,9 @@ Description: Develop a tone generator using PWM on the audio jack connector of t
 
 This project is using the FPGA Nexys A7-50T board, which uses Butterworth low pass filter, that can only support mono audio out.
 
+For more information, please click on this link, which will redirect you to official Digilent website, containing all the important info on Nexys A7-50T:
+https://digilent.com/reference/programmable-logic/nexys-a7/start
+
 **Software description**
 
 We created a number of switches, each corresponding to each desired tone, when flipped, these switches should work as an input to create a different tone, and output those tones into audio_out. At the core of it all is NCO (Numerically Controlled Oscillator), which generates each tone on a different frequency, and the signal output from that is channeled into an OR switch, which then is transferred to audio_out, finally, creating a sound. Each frequency in the NCO is created using the board's own 100MHz clock, which is then used to divide the desired frequency, as seen in the NCO file.
