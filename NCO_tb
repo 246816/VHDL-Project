@@ -8,14 +8,14 @@ END tb_NCO;
 ARCHITECTURE behavior OF tb_NCO IS 
     COMPONENT NCO
         GENERIC(
-            clk_freq : INTEGER := 100000000; -- 100 MHz clock frequency
-            freq_A   : INTEGER := 440;       -- desired output frequency for note A
-            freq_B   : INTEGER := 493;       -- desired output frequency for note B
-            freq_C   : INTEGER := 261;       -- Frequency for note C
-            freq_D   : INTEGER := 293;       -- Frequency for note D
-            freq_E   : INTEGER := 329;       -- Frequency for note E
-            freq_F   : INTEGER := 349;       -- Frequency for note F
-            freq_G   : INTEGER := 392        -- Frequency for note G
+            clk_freq : INTEGER := 100000000;
+            freq_A   : INTEGER := 440;
+            freq_B   : INTEGER := 493;
+            freq_C   : INTEGER := 261;
+            freq_D   : INTEGER := 293;
+            freq_E   : INTEGER := 329;
+            freq_F   : INTEGER := 349;
+            freq_G   : INTEGER := 392
         );
         PORT(
             clk   : IN  std_logic;
@@ -30,11 +30,8 @@ ARCHITECTURE behavior OF tb_NCO IS
         );
     END COMPONENT;
     
-    -- Inputs
     SIGNAL clk   : std_logic := '0';
     SIGNAL reset : std_logic := '0';
-
-    -- Outputs
     SIGNAL out_A : std_logic;
     SIGNAL out_B : std_logic;
     SIGNAL out_C : std_logic;
@@ -42,8 +39,6 @@ ARCHITECTURE behavior OF tb_NCO IS
     SIGNAL out_E : std_logic;
     SIGNAL out_F : std_logic;
     SIGNAL out_G : std_logic;
-
-    -- Pulse counters for each note
     SIGNAL pulse_count_A : INTEGER := 0;
     SIGNAL pulse_count_B : INTEGER := 0;
     SIGNAL pulse_count_C : INTEGER := 0;
@@ -51,12 +46,9 @@ ARCHITECTURE behavior OF tb_NCO IS
     SIGNAL pulse_count_E : INTEGER := 0;
     SIGNAL pulse_count_F : INTEGER := 0;
     SIGNAL pulse_count_G : INTEGER := 0;
-
-    -- Clock period definitions
     CONSTANT clk_period : TIME := 10 ns; -- 100MHz clock
 
 BEGIN
-    -- Instantiate the Unit Under Test (UUT)
     uut: NCO PORT MAP (
         clk   => clk,
         reset => reset,
@@ -69,7 +61,6 @@ BEGIN
         out_G => out_G
     );
 
-    -- Clock process definitions
     clk_process : PROCESS
     BEGIN
         clk <= '0';
@@ -78,7 +69,6 @@ BEGIN
         WAIT FOR clk_period/2;
     END PROCESS;
 
-    -- Count pulses for each note
     count_pulses : PROCESS
     BEGIN
         WAIT UNTIL rising_edge(clk);
@@ -105,19 +95,15 @@ BEGIN
         END IF;
     END PROCESS count_pulses;
 
-    -- Stimulus process
     stim_proc: PROCESS
     BEGIN       
-        -- Initial reset
         reset <= '1';
         WAIT FOR 100 ns;  
         reset <= '0'; 
         WAIT FOR 100 ns;
 
-        -- Run simulation for 1 second equivalent time
         WAIT FOR 1 sec;
 
-        -- Output pulse counts
         ASSERT FALSE REPORT "Pulse Count A: " & INTEGER'image(pulse_count_A);
         ASSERT FALSE REPORT "Pulse Count B: " & INTEGER'image(pulse_count_B);
         ASSERT FALSE REPORT "Pulse Count C: " & INTEGER'image(pulse_count_C);
