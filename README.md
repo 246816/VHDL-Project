@@ -18,7 +18,7 @@ Description: Develop a tone generator using PWM on the audio jack connector of t
 
 This project is using the FPGA Nexys A7-50T board, which uses Butterworth low pass filter, that can only support mono audio out.
 
-For more information, please click on this link, which will redirect you to official Digilent website, containing all the important info on Nexys A7-50T:
+For more information, follow this link, which will redirect you to the official Digilent website, containing all the important info on Nexys A7-50T:
 https://digilent.com/reference/programmable-logic/nexys-a7/start
 
 **Software description**
