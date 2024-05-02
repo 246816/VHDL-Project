@@ -18,8 +18,12 @@ Description: Develop a tone generator using PWM on the audio jack connector of t
 
 **Software description**
 
-- **Component(s) simulation**
+We created a number of switches, each corresponding to each desired tone, when flipped, these switches should work as an input to create a different tone, and output those tones into audio_out. At the core of it all is NCO (Numerically Controlled Oscillator), which generates each tone on a different frequency, and the signal output from that is channeled into an OR switch, which then is transferred to audio_out, finally, creating a sound.
 
 **Instructions**
 
+Flipping a switch should prompt the board to create a different tone, which can be listened to via audio jack 3.5mm, which has a port at the back side of the board.
+
 **References**
+
+For references we used the already created tools that we have written in VHDL throughout the whole VHDL course.
