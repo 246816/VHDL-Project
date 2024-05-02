@@ -1,6 +1,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL; -- For using integer and arithmetic operations
+USE ieee.numeric_std.ALL;
 
 ENTITY tb_NCO IS
 END tb_NCO;
