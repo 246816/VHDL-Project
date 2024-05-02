@@ -1,0 +1,70 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity toplevel is
+    Port (
+        clk       : in  std_logic;  -- Clock input
+        reset     : in  std_logic;  -- Reset input
+        sw_A      : in  std_logic;  -- Switch for note A
+        sw_B      : in  std_logic;  -- Switch for note B
+        sw_C      : in  std_logic;  -- Switch for note C
+        sw_D      : in  std_logic;  -- Switch for note D
+        sw_E      : in  std_logic;  -- Switch for note E
+        sw_F      : in  std_logic;  -- Switch for note F
+        sw_G      : in  std_logic;  -- Switch for note G
+        audio_out : out std_logic    -- Audio output
+    );
+end toplevel;
+
+architecture Behavioral of toplevel is
+    -- Component declaration for switches entity
+    component switches is
+        Port (
+            clk        : in  std_logic;  -- Clock input
+            reset      : in  std_logic;  -- Reset input
+            sw_A       : in  std_logic;  -- Switch for note A
+            sw_B       : in  std_logic;  -- Switch for note B
+            sw_C       : in  std_logic;  -- Switch for note C
+            sw_D       : in  std_logic;  -- Switch for note D
+            sw_E       : in  std_logic;  -- Switch for note E
+            sw_F       : in  std_logic;  -- Switch for note F
+            sw_G       : in  std_logic;  -- Switch for note G
+            audio_out1 : out std_logic;  -- Audio output
+            audio_out2 : out std_logic;  -- Audio output
+            audio_out3 : out std_logic;  -- Audio output
+            audio_out4 : out std_logic;  -- Audio output
+            audio_out5 : out std_logic;  -- Audio output
+            audio_out6 : out std_logic;  -- Audio output
+            audio_out7 : out std_logic   -- Audio output
+        );
+    end component;
+
+    -- Declare signals for switches outputs
+    signal switches_audio_out1, switches_audio_out2, switches_audio_out3, switches_audio_out4, switches_audio_out5, switches_audio_out6, switches_audio_out7: std_logic;
+
+begin
+    -- Instantiate switches entity
+    switches_inst : switches
+        port map(
+            clk         => clk,             -- Connect clock signal
+            reset       => reset,           -- Connect reset signal
+            sw_A        => sw_A,
+            sw_B        => sw_B,
+            sw_C        => sw_C,
+            sw_D        => sw_D,
+            sw_E        => sw_E,
+            sw_F        => sw_F,
+            sw_G        => sw_G,
+            audio_out1  => switches_audio_out1, -- Connect audio_out1 signal
+            audio_out2  => switches_audio_out2, -- Connect audio_out2 signal
+            audio_out3  => switches_audio_out3, -- Connect audio_out3 signal
+            audio_out4  => switches_audio_out4, -- Connect audio_out4 signal
+            audio_out5  => switches_audio_out5, -- Connect audio_out5 signal
+            audio_out6  => switches_audio_out6, -- Connect audio_out6 signal
+            audio_out7  => switches_audio_out7  -- Connect audio_out7 signal
+        );
+
+    -- Output audio from switches module
+    audio_out <= switches_audio_out1 or switches_audio_out2 or switches_audio_out3 or switches_audio_out4 or switches_audio_out5 or switches_audio_out6 or switches_audio_out7;
+
+end Behavioral;
