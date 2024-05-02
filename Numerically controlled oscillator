@@ -4,30 +4,30 @@ use ieee.numeric_std.all;
 
 entity NCO is
     generic(
-        clk_freq : integer := 100000000; -- input frequency 100 MHz
-        freq_C   : integer := 261;       -- desired output frequency for note C
-        freq_D   : integer := 293;       -- desired output frequency for note D
-        freq_E   : integer := 329;       -- desired output frequency for note E
-        freq_F   : integer := 349;       -- desired output frequency for note F
-        freq_G   : integer := 392;       -- desired output frequency for note G
-        freq_A   : integer := 440;       -- desired output frequency for note A
-        freq_B   : integer := 493        -- desired output frequency for note B
+        clk_freq : integer := 100000000;
+        freq_C   : integer := 261;
+        freq_D   : integer := 293;
+        freq_E   : integer := 329;
+        freq_F   : integer := 349;
+        freq_G   : integer := 392;
+        freq_A   : integer := 440;
+        freq_B   : integer := 493
     );
     port(
-        clk    : in  std_logic; -- Input clock
-        reset  : in  std_logic; -- Synchronous reset
-        out_C  : out std_logic; -- Output signal for note C
-        out_D  : out std_logic; -- Output signal for note D
-        out_E  : out std_logic; -- Output signal for note E
-        out_F  : out std_logic; -- Output signal for note F
-        out_G  : out std_logic; -- Output signal for note G
-        out_A  : out std_logic; -- Output signal for note A
-        out_B  : out std_logic  -- Output signal for note B
+        clk    : in  std_logic;
+        reset  : in  std_logic;
+        out_C  : out std_logic;
+        out_D  : out std_logic;
+        out_E  : out std_logic;
+        out_F  : out std_logic;
+        out_G  : out std_logic;
+        out_A  : out std_logic;
+        out_B  : out std_logic
     );
 end NCO;
 
 architecture behavior of NCO is
-    -- Calculate dividers for the desired frequencies.
+    
     constant divider_C : integer := clk_freq / (2 * freq_C);
     constant divider_D : integer := clk_freq / (2 * freq_D);
     constant divider_E : integer := clk_freq / (2 * freq_E);
@@ -36,13 +36,13 @@ architecture behavior of NCO is
     constant divider_A : integer := clk_freq / (2 * freq_A);
     constant divider_B : integer := clk_freq / (2 * freq_B);
 
-    -- Signal counters for each note.
+    
     signal counter_C, counter_D, counter_E, counter_F, counter_G, counter_A, counter_B: integer := 0;
 
-    -- Output signals for each note.
+    
     signal out_signal_C, out_signal_D, out_signal_E, out_signal_F, out_signal_G, out_signal_A, out_signal_B: std_logic := '0';
 begin
-    -- Process for toggling each output signal based on its respective counter and divider.
+    
     process(clk, reset)
     begin
         if reset = '1' then
@@ -107,7 +107,7 @@ begin
         end if;
     end process;
     
-    -- Assign the toggled signals to the output ports.
+    
     out_C <= out_signal_C;
     out_D <= out_signal_D;
     out_E <= out_signal_E;
