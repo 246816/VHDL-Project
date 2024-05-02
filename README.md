@@ -27,7 +27,7 @@ We created a number of switches, each corresponding to each desired tone, when f
 
 **Instructions**
 
-Flipping a switch should prompt the board to create a different tone, which can be listened to via audio jack 3.5mm, which has a port at the back side of the board.
+Flipping a switch on the lower part of the board should prompt it to create a different tone, which can be listened to via audio jack 3.5mm, which has a port at the back side of the board.
 
 **References**
 
