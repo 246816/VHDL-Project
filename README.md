@@ -34,7 +34,7 @@ Flipping a switch on the lower part of the board should prompt it to create a di
 
 **References**
 
-For references we used the already created tools that we have written in VHDL throughout the whole VHDL course, and multiple other sources.
+For references we used the already created tools that we have written in VHDL throughout the whole VHDL course, and multiple other sources, including ChatGPT for consultation and inspiration.
 
 https://www.youtube.com/watch?v=tJvpOZ3CUwU
 https://gist.github.com/RickKimball/45d0753a900f92d5fdd836746062588c
