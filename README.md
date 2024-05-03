@@ -34,4 +34,11 @@ Flipping a switch on the lower part of the board should prompt it to create a di
 
 **References**
 
-For references we used the already created tools that we have written in VHDL throughout the whole VHDL course.
+For references we used the already created tools that we have written in VHDL throughout the whole VHDL course, and multiple other sources.
+
+https://www.youtube.com/watch?v=tJvpOZ3CUwU
+![image](https://github.com/246816/VHDL-Project/assets/168731152/976c7150-0d5c-4b0b-b1a5-f8926a4e8646)
+https://gist.github.com/RickKimball/45d0753a900f92d5fdd836746062588c
+![image](https://github.com/246816/VHDL-Project/assets/168731152/1d53ed2d-747d-4287-9593-a2ccd33a588d)
+https://en.wikipedia.org/wiki/Numerically_controlled_oscillator
+![image](https://github.com/246816/VHDL-Project/assets/168731152/7484aeed-d801-4afa-b24b-d3f0893a6218)
